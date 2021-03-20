@@ -1,0 +1,50 @@
+.container {
+  width: 70%;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  background-color: #307FE2;
+}
+
+.menuHeader {
+  margin: 0 0 16px 0;
+  padding: 12px 0;
+  background-color: #074DB6;
+  font-size: 24px;
+}
+
+.header {
+  padding: 10px 0;
+  margin-top: 30px;
+  font-size: 18px;
+  background: rgba(196, 196, 196, 0.2);
+}
+
+.btn {
+  color: #fff;
+  margin: 0 auto;
+  padding: 6px 14px;
+  border: none;
+  background: rgba(196, 196, 196, 0.2);
+  border-radius: 6px;
+}
+
+.accountBtn {
+  margin-bottom: 16px;
+}
+
+.iconBack {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  font-size: 26px;
+  padding: 4px;
+  background-color: rgba(196, 196, 196, 0.2);
+  border-radius: 6px;
+}
+
+.accountContainer {
+  display: flex;
+  flex-direction: column;
+}
