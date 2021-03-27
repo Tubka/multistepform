@@ -1,0 +1,60 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.header {
+  margin-top: 0;
+  padding: 12px 0;
+  font-size: 16px;
+  color: #fff;
+  background-color: #074DB6;
+}
+
+.nameForm {
+  color: #fff;
+  padding: 4px 0;
+  margin: 0;
+  background-color:#4D8DDC;
+}
+
+.oneLi {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+
+.container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+  margin: 30px auto 0;
+  background-color: rgb(187, 187, 187);
+  border: 1px solid red
+}
+
+.flex {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.question {
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  align-self: flex-end;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  padding: 12px 24px;
+  background: #307FE2;
+  border-radius: 6px;
+}

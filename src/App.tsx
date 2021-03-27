@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import { LoginPage } from './components/LoginPage/LoginPage';
-import { Navigation } from './components/Navigation/Navigation';
+import React from 'react';
+import { AdminPanel } from './components/AdminPanel/AdminPanel';
 
 const App = (): JSX.Element => {
   return (
     <div className="App">
-      <Navigation />
+      <AdminPanel />
     </div>
   );
 };

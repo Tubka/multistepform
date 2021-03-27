@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo512.png'
 import classes from './LoginPage.module.css'
-import { stringify } from 'node:querystring';
 
 export const LoginPage = () => {
   const [dataLogin, setDataLogin] = useState<{login: string, password: string}>({
