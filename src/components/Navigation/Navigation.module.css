@@ -1,5 +1,5 @@
 .container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 70%;
@@ -61,7 +61,7 @@
 }
 
 .menuBtn {
-  position: absolute;
+  position: fixed;
   transform: translateX(0) rotate(270deg);
   left: -20px;
   top: 20px;
