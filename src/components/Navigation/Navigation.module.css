@@ -1,0 +1,120 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  background-color: #307FE2;
+  transform: translateX(-100%);
+  z-index: 2;
+  
+}
+
+.showMenu {
+  transform: translateX(0);
+  animation: moveToRightMenu 0.3s;
+}
+
+.menuHeader {
+  margin: 0 0 16px 0;
+  padding: 12px 0;
+  background-color: #074DB6;
+  font-size: 24px;
+}
+
+.header {
+  padding: 10px 0;
+  margin-top: 30px;
+  font-size: 18px;
+  background: #4D8DDC;
+}
+
+.btn {
+  color: #fff;
+  margin: 0 auto;
+  padding: 6px 14px;
+  border: none;
+  background: #4D8DDC;
+  border-radius: 6px;
+}
+
+.accountBtn {
+  margin-bottom: 16px;
+}
+
+.iconBack {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  font-size: 26px;
+  padding: 4px;
+  background-color: rgba(196, 196, 196, 0.2);
+  border-radius: 6px;
+}
+
+.accountContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuBtn {
+  position: absolute;
+  transform: translateX(0) rotate(270deg);
+  left: -20px;
+  top: 20px;
+  color: #fff;
+  margin: 0 auto;
+  padding: 6px 14px;
+  border: 1px solid black;
+  background: #4D8DDC;
+  border-radius: 0 0 6px 6px;
+  animation: moveToRightBtn 0.3s;
+}
+
+.menuBtnHidden {
+  transform: translateX(-100%) rotate(270deg);
+  animation: moveToLeftBtn 0.3s;
+}
+
+
+@keyframes moveToRightMenu {
+  0% {
+    transform: translateX(-100%) 
+  }
+  
+  30% {
+    transform: translateX(-100%) 
+  }
+
+  100% {
+    transform: translateX(0) 
+  }
+}
+
+
+@keyframes moveToLeftBtn {
+  0% {
+    transform: translateX(0) rotate(270deg)
+  }
+
+  100% {
+    transform: translateX(-100%) rotate(270deg)
+  }
+}
+
+@keyframes moveToRightBtn {
+  0% {
+    transform: translateX(-100%) rotate(270deg)
+  }
+  
+  30% {
+    transform: translateX(-100%) rotate(270deg)
+  }
+
+  100% {
+    transform: translateX(0) rotate(270deg)
+  }
+}
