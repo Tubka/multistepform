@@ -1,14 +1,18 @@
-import React from 'react';
+import { IElement } from '../../../models/Form.models';
 
-export const ChooseElement = ({element, handleEdit} : any): JSX.Element => {
+interface IProps {
+  element: IElement;
+}
+
+export const ChooseElement = ({element} : IProps): JSX.Element => {
   const CustomTag = element.element as keyof JSX.IntrinsicElements;
 
   return (
     <>
-      {element.element === 'input' && <CustomTag type={element.type}/>}
+      {element.element === 'input' && <CustomTag {...element.properties}/>}
       {element.element === 'select' && 
-      <CustomTag style={{width: '100px'}}>
-        {CustomTag === 'select' && element.options?.map((oneOption: any) => <option>{oneOption}</option>)}
+      <CustomTag {...element.properties} style={{width: '100px'}}>
+        {CustomTag === 'select' && element.options?.map((oneOption, index: number) => <option key={index}>{oneOption}</option>)}
       </CustomTag>}
     </>
   )
