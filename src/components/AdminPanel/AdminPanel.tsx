@@ -19,33 +19,54 @@ export const AdminPanel = (): JSX.Element => {
             elements: [
               {id: 111,
                 element: 'input', 
-                type: 'text', 
-                label: `what's your name?`},
+                // type: 'text', 
+                label: `what's your name?`,
+                properties: {
+                  type: 'text'
+                },
+              },
               {id: 112, 
                 element: 'input', 
-                type: 'checkbox', 
-                label: 'Question'},
+                // type: 'checkbox', 
+                label: 'Question',
+                properties: {
+                    type: 'text'
+                  },
+              },
               {id: 113, 
                 element: 'input', 
-                type: 'password', 
-                label: 'empty'}]
+                // type: 'password', 
+                label: 'empty',
+                properties: {
+                    type: 'text'
+                  },
+              }]
           },
           {
             id: 12,
             elements: [
               {id: 121, 
                 element: 'select', 
-                type: 'text', 
+                // type: 'text', 
                 label: 'show', 
                 options: ['a','b', 'c']},
+                
               {id: 122, 
                 element: 'input', 
-                type: 'checkbox', 
-                label: 'Are you happy?'},
+                // type: 'checkbox', 
+                label: 'Are you happy?',
+                properties: {
+                  type: 'checkbox'
+                },
+              },
               {id: 123, 
                 element: 'input', 
-                type: 'password', 
-                label: 'blah'}]
+                // type: 'password', 
+                label: 'blah',
+                properties: {
+                  type: 'text'
+                },
+              }]
           }
         ]
       })
@@ -56,7 +77,30 @@ export const AdminPanel = (): JSX.Element => {
     setEditId(id)
   }
   const handleNewElement = (id: number | string) => {
-    
+    if(form) {
+      const newSteps = form.steps.map(el => {
+
+        if(el.id === id) {
+          return {
+            ...el,
+            elements: [...el.elements, {id:155, label: '', element: ''}]
+          }
+        }
+
+        return el
+      })
+      
+      setForm((prev: IForm | null) => {
+
+        if(!prev) return null
+
+        return ({
+          ...prev,
+          steps: newSteps
+        })
+
+      })
+    }
   }
 
   const handleNewStep = () => {
@@ -85,13 +129,13 @@ export const AdminPanel = (): JSX.Element => {
       <h1 className={classes.header}>CREATOR</h1>
       <ul className={classes.forms}>
 
-        {form?.steps.map((step, index) => {
+        {form?.steps?.map((step, index) => {
           return (
             <li className={classes.container} key={index}>
 
-              {step.elements.map((el) => {
+              {step.elements?.map((el) => {
                   return (
-                    <div key={index} className={classes.flex}>
+                    <div key={el.id} className={classes.flex}>
                       <div>
                         <label className={classes.question}>{el.label}</label>
                         <div>

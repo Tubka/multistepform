@@ -1,4 +1,4 @@
-interface IProperties {
+export interface IProperties {
   [key: string]: string;
 }
 
@@ -6,11 +6,11 @@ interface IStyle {
   [key: string]: string
 }
 
-interface IElement {
+export interface IElement {
   id: string | number;
   label: string;
   element: string;
-  type?: string;
+  // type: string;
   description?: string;
   options?: string[];
   properties?: IProperties;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import logo from './logo512.png'
 import classes from './LoginPage.module.css'
 
