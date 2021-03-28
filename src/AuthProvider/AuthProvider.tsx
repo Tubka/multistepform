@@ -5,7 +5,7 @@ import { Unauthentication } from '../Unauthentication';
 import { AuthContext } from './useAuthState';
 
 const sleep = (time: number) => new Promise(resolve => setTimeout(resolve, time))
-const getUser = () => sleep(3000).then(() => ({username: 'Krzysiek'}))
+const getUser = () => sleep(3000).then(() => ({username: null}))
 
 export const AuthProvider: FC = ({children}) => {
   
@@ -14,10 +14,6 @@ export const AuthProvider: FC = ({children}) => {
       error: null,
       user: null,
     })
-
-    useEffect(() => {
-      console.log(state)
-    },[state])
 
     useEffect(() => {
       getUser().then(

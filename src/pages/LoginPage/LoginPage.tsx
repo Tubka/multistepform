@@ -32,9 +32,9 @@ export const LoginPage = () => {
             type="password" 
             value={dataLogin.password} 
             onChange={(e) => setDataLogin((prevState) => ({...prevState, ['password']: e.target.value}))}/>
-        <button className={classes.button}>
+          <button className={classes.button}>
           ZALOGUJ
-        </button>
+          </button>
       </form>
     </div>
   )
