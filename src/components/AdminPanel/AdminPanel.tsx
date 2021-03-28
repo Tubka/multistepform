@@ -19,7 +19,6 @@ export const AdminPanel = (): JSX.Element => {
             elements: [
               {id: 111,
                 element: 'input', 
-                // type: 'text', 
                 label: `what's your name?`,
                 properties: {
                   type: 'text'
@@ -27,7 +26,6 @@ export const AdminPanel = (): JSX.Element => {
               },
               {id: 112, 
                 element: 'input', 
-                // type: 'checkbox', 
                 label: 'Question',
                 properties: {
                     type: 'text'
@@ -35,7 +33,6 @@ export const AdminPanel = (): JSX.Element => {
               },
               {id: 113, 
                 element: 'input', 
-                // type: 'password', 
                 label: 'empty',
                 properties: {
                     type: 'text'
@@ -47,13 +44,11 @@ export const AdminPanel = (): JSX.Element => {
             elements: [
               {id: 121, 
                 element: 'select', 
-                // type: 'text', 
                 label: 'show', 
                 options: ['a','b', 'c']},
                 
               {id: 122, 
                 element: 'input', 
-                // type: 'checkbox', 
                 label: 'Are you happy?',
                 properties: {
                   type: 'checkbox'
@@ -61,7 +56,6 @@ export const AdminPanel = (): JSX.Element => {
               },
               {id: 123, 
                 element: 'input', 
-                // type: 'password', 
                 label: 'blah',
                 properties: {
                   type: 'text'
@@ -125,7 +119,7 @@ export const AdminPanel = (): JSX.Element => {
 
   return (
     <div>
-      <Navigation />
+      {/* <Navigation /> */}
       <h1 className={classes.header}>CREATOR</h1>
       <ul className={classes.forms}>
 
