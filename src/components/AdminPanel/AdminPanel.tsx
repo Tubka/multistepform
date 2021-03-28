@@ -78,7 +78,7 @@ export const AdminPanel = (): JSX.Element => {
   }
   const handleNewElement = (id: number | string) => {
     if(form) {
-      const newSteps = form.steps.map((el: any) => {
+      const newSteps = form.steps.map(el => {
 
         if(el.id === id) {
           return {
@@ -86,17 +86,20 @@ export const AdminPanel = (): JSX.Element => {
             elements: [...el.elements, {id:155, label: '', element: ''}]
           }
         }
-        
+
         return el
       })
       
-      setForm((prev: any) => {
+      setForm((prev: IForm | null) => {
+
+        if(!prev) return null
+
         return ({
           ...prev,
           steps: newSteps
         })
-      })
 
+      })
     }
   }
 
