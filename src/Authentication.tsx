@@ -9,11 +9,13 @@ import {
   Link
 } from "react-router-dom";
 import { LoginPage } from './pages/LoginPage/LoginPage';
+import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 
 export const Authentication = () => {
   
-  const routes =  <Router>
-                    <div>
+  const routes =  
+  // <Router>
+                    // <div>
                       {/* <nav>
                         <ul>
                           <li>
@@ -34,6 +36,8 @@ export const Authentication = () => {
                         {/* <Route path="/Login">
                           <LoginPage />
                         </Route> */}
+
+                        
                         <Route path="/admin">
                           <Admin />
                         </Route>
@@ -41,8 +45,8 @@ export const Authentication = () => {
                           {/* <Home /> */}
                         </Route>
                       </Switch>
-                    </div>
-                  </Router>
+                    {/* </div> */}
+                  {/* </Router> */}
 
   return (
     <>

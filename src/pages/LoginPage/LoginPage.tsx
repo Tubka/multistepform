@@ -1,16 +1,36 @@
 import React, { useState } from 'react';
 import logo from './logo512.png'
 import classes from './LoginPage.module.css'
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
+import { IDataLogin } from '../../models/Login';
 
 export const LoginPage = () => {
-  const [dataLogin, setDataLogin] = useState<{login: string, password: string}>({
-    login: '',
+  const history = useHistory()
+
+  const [dataLogin, setDataLogin] = useState<IDataLogin>({
+    email: '',
     password: '',
   })
 
   const handleOnSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(dataLogin.login, dataLogin.password)
+    console.log(dataLogin.email, dataLogin.password)
+
+    const login = async (data: IDataLogin) => {
+      try {
+        const result = await axios.post(`https://msf-server.azurewebsites.net/api/user/login`, data);
+        console.log(result)
+      }
+      catch {
+        alert('coś poszło nie tak, srpóbuj ponownie.')
+      }
+    }
+    login(dataLogin)
+  }
+
+  const handleRegistry = () => {
+    history.push('/register')
   }
 
   return (
@@ -19,12 +39,12 @@ export const LoginPage = () => {
         <img src={logo} alt='logo' className={classes.img}/>
       </div>
       <form className={classes.form} onSubmit={handleOnSubmit}>
-        <label className={classes.label}>Login</label>
+        <label className={classes.label}>E-mail</label>
         <input 
           className={classes.input} 
           type="text" 
-          value={dataLogin.login} 
-          onChange={(e) => setDataLogin((prevState) => ({...prevState, ['login']: e.target.value}))}/>
+          value={dataLogin.email} 
+          onChange={(e) => setDataLogin((prevState) => ({...prevState, ['email']: e.target.value}))}/>
         
         <label className={classes.label}>Password</label>
           <input 
@@ -36,6 +56,9 @@ export const LoginPage = () => {
           ZALOGUJ
           </button>
       </form>
+      <button 
+        className={`${classes.button} ${classes.registryBtn}`}
+        onClick={handleRegistry}>REJESTRAJCA</button>
     </div>
   )
 }
