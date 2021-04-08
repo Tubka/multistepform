@@ -9,9 +9,11 @@ export const LoginPage = () => {
   })
 
   const handleOnSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log(dataLogin.login, dataLogin.password)
+    e.preventDefault();
+    console.log(dataLogin.login, dataLogin.password);
+    
   }
+
 
   return (
     <div className={classes.container} >
