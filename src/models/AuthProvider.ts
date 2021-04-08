@@ -6,4 +6,5 @@ export interface IAuthProvider {
   status: string;
   error: string | null;
   user: IUser | null;
+  accessToken: string | '';
 }

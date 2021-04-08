@@ -117,6 +117,9 @@ export const AdminPanel = (): JSX.Element => {
     console.log(id)
   }
 
+  useEffect(() => {
+    console.log('test')
+  },[])
   return (
     <div>
       {/* <Navigation /> */}

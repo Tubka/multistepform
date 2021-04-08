@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Authentication } from './Authentication';
 import { AuthProvider } from './AuthProvider/AuthProvider';
@@ -10,11 +10,12 @@ import { Unauthentication } from './Unauthentication';
 const App = (): JSX.Element => {
 
   const Content = () => {
-    const {user} = useAuthState()
-    console.log(user)
+    const {state} = useAuthState()
 
     return (
-      user.username ? <Authentication/> : <Unauthentication />
+      <>
+        {state?.user?.username ? <Authentication/> : <Unauthentication />}
+      </>
     )
   }
 

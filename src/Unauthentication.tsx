@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 
@@ -13,6 +13,7 @@ export const Unauthentication = () => {
     <Route path="/login">
       <LoginPage />
     </Route>
+    <Redirect from="/" to="/login" />
   </Switch>
   return (
     <>
