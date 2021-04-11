@@ -1,17 +1,50 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logo from './logo512.png'
 import classes from './LoginPage.module.css'
+import { useHistory } from "react-router-dom";
+import { IDataLogin } from '../../models/Login';
+import { useAuthState } from '../../AuthProvider/useAuthState';
+import { Fetcher } from '../../helpers/Fetcher';
+import { IAuthProvider } from '../../models/AuthProvider';
 
 export const LoginPage = () => {
-  const [dataLogin, setDataLogin] = useState<{login: string, password: string}>({
-    login: '',
+  const history = useHistory();
+  const {state, setState} = useAuthState(); // TODO
+  const [dataLogin, setDataLogin] = useState<IDataLogin>({
+    email: '',
     password: '',
   })
 
   const handleOnSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(dataLogin.login, dataLogin.password);
+
+    const login = async (data: IDataLogin) => {
+      setState((prev: IAuthProvider) => ({...prev, status: 'pending'}))
+      const result = await Fetcher.post(`https://msf-server.azurewebsites.net/api/user/login`, data);
+
+      if(result.error)  {
+        alert('wpisz poprawne dane')
+        setState((prev: IAuthProvider) => ({...prev, status: "error"}))
+        return;
+      }
+
+      localStorage.setItem('token', result.data.token);
+      setState((prev: IAuthProvider) => {
+        return ({
+          ...prev,
+          status: result.data.status,
+          user: 'Krzysztof',
+          accessToken: result.data.token
+        })
+      })  
+      history.push('/admin')
+    }
     
+    login(dataLogin)
+  }
+
+  const handleRegistry = () => {
+    history.push('/register')
   }
 
 
@@ -21,12 +54,12 @@ export const LoginPage = () => {
         <img src={logo} alt='logo' className={classes.img}/>
       </div>
       <form className={classes.form} onSubmit={handleOnSubmit}>
-        <label className={classes.label}>Login</label>
+        <label className={classes.label}>E-mail</label>
         <input 
           className={classes.input} 
           type="text" 
-          value={dataLogin.login} 
-          onChange={(e) => setDataLogin((prevState) => ({...prevState, ['login']: e.target.value}))}/>
+          value={dataLogin.email} 
+          onChange={(e) => setDataLogin((prevState) => ({...prevState, ['email']: e.target.value}))}/>
         
         <label className={classes.label}>Password</label>
           <input 
@@ -38,6 +71,9 @@ export const LoginPage = () => {
           ZALOGUJ
           </button>
       </form>
+      <button 
+        className={`${classes.button} ${classes.registryBtn}`}
+        onClick={handleRegistry}>REJESTRAJCA</button>
     </div>
   )
 }

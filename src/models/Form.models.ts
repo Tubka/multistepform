@@ -3,7 +3,7 @@ export interface IProperties {
 }
 
 interface IStyle {
-  [key: string]: string
+  [key: string]: string;
 }
 
 export interface IElement {
@@ -17,14 +17,18 @@ export interface IElement {
   style?: IStyle;
 }
 
-interface IStep {
+export interface IStep {
   id: string | number;
   elements: IElement[];
 }
 
 export interface IForm {
-  id: string | number;
+  _id: string;
   name: string;
   steps: IStep[];
   style?: IStyle;
+}
+
+export interface IFormObj {
+  [key: string]: IForm;
 }
