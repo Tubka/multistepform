@@ -1,12 +1,25 @@
 import './App.css';
-import { AdminPanel } from './components/AdminPanel/AdminPanel';
+import { Authentication } from './Authentication';
+import { AuthProvider } from './AuthProvider/AuthProvider';
+import { useAuthState } from './AuthProvider/useAuthState';
+import { Unauthentication } from './Unauthentication';
 
 const App = (): JSX.Element => {
+  const Content = () => {
+    const {state, setState} = useAuthState()
+    return (
+      <>
+        {state.user ? <Authentication/> : <Unauthentication />}
+      </>
+    )
+  }
+
   return (
-    <div className="App">
-      <AdminPanel />
-    </div>
-  );
+    <AuthProvider>
+      <Content />
+    </AuthProvider>
+  )
 };
 
 export default App;
+
