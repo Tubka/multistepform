@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { AdminPanel } from '../../components/AdminPanel/AdminPanel';
 import { GetSelectors, Navigation } from '../../components/Navigation/Navigation';
 import { IForm } from '../../models/Form.models';
-import { HandlerForms } from './helper/Helpers';
+import { HandlerForms } from './Helpers';
 
 export const Admin = () => {
   const { forms } = useSelector(GetSelectors.form);

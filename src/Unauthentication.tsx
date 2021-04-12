@@ -6,15 +6,16 @@ import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 export const Unauthentication = () => {
   
   const routes =
-  <Switch>
-    <Route path="/register">
-      <RegisterPage />
-    </Route>
-    <Route path="/login">
-      <LoginPage />
-    </Route>
-    <Redirect from="/" to="/login" />
-  </Switch>
+    <Switch>
+      <Route path="/register">
+        <RegisterPage />
+      </Route>
+      <Route path="/login">
+        <LoginPage />
+      </Route>
+      <Redirect from="/" to="/login" />
+    </Switch>
+    
   return (
     <>
       {routes}

@@ -7,7 +7,7 @@ interface IStyle {
 }
 
 export interface IElement {
-  id: string | number;
+  _id: string;
   label: string;
   element: string;
   // type: string;
@@ -18,17 +18,21 @@ export interface IElement {
 }
 
 export interface IStep {
-  id: string | number;
+  _id: string;
   elements: IElement[];
 }
 
 export interface IForm {
   _id: string;
   name: string;
-  steps: IStep[];
+  steps: IStep[] | IStepObj;
   style?: IStyle;
 }
 
 export interface IFormObj {
   [key: string]: IForm;
+}
+
+export interface IStepObj {
+  [key: string]: IStep;
 }

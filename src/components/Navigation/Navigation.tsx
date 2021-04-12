@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classes from './Navigation.module.css';
 import { IoArrowBack } from "react-icons/io5";
-import { HandlerForms } from '../../pages/Admin/helper/Helpers';
+import { HandlerForms } from '../../pages/Admin/Helpers';
 import { useSelector } from 'react-redux';
 import { ListForms } from '../Forms/ListForms';
 import { IForm } from '../../models/Form.models';
@@ -55,7 +55,7 @@ export const Navigation = ({forms, setIdForm} : IProps): JSX.Element => {
           <h2 className={classes.header}>MY FORMS</h2>
           <ListForms forms={forms} onclick={handleSetIdForm}/>
           <label htmlFor="">
-            <input type="text" placeholder="Name Form" value={nameForm} onChange={(e) => setNameForm(e.target.value)}/>
+            <input type="text" className={classes.nameNewForm} placeholder="Name Form" value={nameForm} onChange={(e) => setNameForm(e.target.value)}/>
             <button className={classes.btn} onClick={handleSendNewForm}>New Form</button>
           </label>
         </div>

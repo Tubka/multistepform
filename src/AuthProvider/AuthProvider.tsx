@@ -13,7 +13,7 @@ export const AuthProvider: FC = ({children}) => {
     const history = useHistory()
 
     const [state, setState] = useState<IAuthProvider>({
-      status: 'error',
+      status: 'pending',
       error: null,
       user: null,
       accessToken: '',
@@ -41,8 +41,6 @@ export const AuthProvider: FC = ({children}) => {
       {console.log(state)}
       {state.status === 'pending' ? (
         <Loading />
-      ) : state.status === 'error' ? (
-        <LoginPage />
       ) : (
         children
       )}

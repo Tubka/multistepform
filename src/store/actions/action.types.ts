@@ -1,9 +1,15 @@
 import { IElement, IForm, IStep } from '../../models/Form.models';
 import { ActionTypes } from './action.enum';
 
-export interface SetForm {
-  type: ActionTypes.SET_FORM;
+export interface SetForms {
+  type: ActionTypes.SET_FORMS;
   forms: IForm[];
+}
+
+export interface SetSteps {
+  type: ActionTypes.SET_STEPS;
+  steps: IStep[];
+  id: string;
 }
 
 export interface AddForm {
@@ -27,10 +33,9 @@ export interface DeleteForm {
   id: string
 }
 
-
-
 export type ActionType =
-    SetForm
+    SetForms
+  | SetSteps
   | AddForm
   | AddStep
   | AddElement

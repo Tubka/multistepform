@@ -1,5 +1,6 @@
 export enum ActionTypes {
-  SET_FORM = 'SET_FORM',
+  SET_FORMS = 'SET_FORMS',
+  SET_STEPS = 'SET_STEPS',
   ADD_FORM = 'ADD_FORM',
   ADD_STEP = 'ADD_STEP',
   ADD_ELEMENT = 'ADD_ELEMENT',

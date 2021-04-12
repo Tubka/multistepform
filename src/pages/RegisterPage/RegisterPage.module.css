@@ -38,6 +38,10 @@
   border-radius: 6px;
   }
 
+  .registryBtn {
+    margin: 40px 20px 40px 0;
+  }
+
   .errors {
       color: red;
       padding: 0 10px;

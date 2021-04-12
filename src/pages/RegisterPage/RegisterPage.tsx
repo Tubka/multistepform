@@ -4,6 +4,7 @@ import classes from './RegisterPage.module.css';
 import axios from 'axios';
 import { IDataLogin } from '../../models/Login';
 import { useHistory } from 'react-router-dom';
+import { Requests } from '../../helpers/Requests';
 
 export const RegisterPage = () => {
   const history = useHistory()
@@ -36,19 +37,24 @@ export const RegisterPage = () => {
     }
     if(errorsArr?.length) return;
 
-    const sendAcc = async (data: IDataLogin): Promise<unknown> => {
-      try {
-        const result = await axios.post(`https://msf-server.azurewebsites.net/api/user/signup`, data)
-        history.push('/login');
+    const sendAcc = async (data: IDataLogin) => {
+      const result = await Requests.signup(data)
+      if(result.error) {
+        alert('Niestety wystąpił błąd')
         return
       }
-      catch(err) {
-        alert('coś poszło nie tak, spróbuj ponownie.');
-        console.log(err.response);
-      }
-      finally {
-        console.log('test');
-      }
+      alert('Założyłeś/aś pomyślnie konto, zaloguj się!')
+      history.push('/login');
+      // try {
+      //   const result = await axios.post(`https://msf-server.azurewebsites.net/api/user/signup`, data)
+      //   return
+      // }
+      // catch(err) {
+      //   alert('coś poszło nie tak, spróbuj ponownie.');
+      // }
+      // finally {
+      //   console.log('test');
+      // }
     }
     const data = {
       email: dataLogin.email,
@@ -56,6 +62,10 @@ export const RegisterPage = () => {
     }
     sendAcc(data)
     console.log(dataLogin.email, dataLogin.password);
+  }
+
+  const handleGoToLogin = () => {
+    history.push('/login')
   }
 
   return (
@@ -94,6 +104,7 @@ export const RegisterPage = () => {
           UTWÓRZ
           </button>
       </form>
+          <button type="button" className={`${classes.button} ${classes.registryBtn}`} onClick={handleGoToLogin}>Mam konto</button>
     </div>
   )
 }

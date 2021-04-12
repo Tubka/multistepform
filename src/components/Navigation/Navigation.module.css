@@ -80,6 +80,10 @@
   animation: moveToLeftBtn 0.3s;
 }
 
+.nameNewForm {
+  margin-right: 5px;
+  width: 60%;
+}
 
 @keyframes moveToRightMenu {
   0% {

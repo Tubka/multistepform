@@ -1,11 +1,19 @@
 import { IForm, IStep, IElement } from '../../models/Form.models';
 import { ActionTypes } from './action.enum';
-import { AddElement, AddForm, AddStep, DeleteForm, SetForm } from './action.types';
+import { AddElement, AddForm, AddStep, DeleteForm, SetForms, SetSteps } from './action.types';
 
-export const reduxSetForm = (forms: IForm[]): SetForm => {
+export const reduxSetForm = (forms: IForm[]): SetForms => {
   return {
-    type: ActionTypes.SET_FORM,
+    type: ActionTypes.SET_FORMS,
     forms
+  }
+}
+
+export const reduxSetSteps = (steps: IStep[], id: string): SetSteps => {
+  return {
+    type: ActionTypes.SET_STEPS,
+    steps,
+    id
   }
 }
 
