@@ -14,18 +14,20 @@ export interface IElement {
   description?: string;
   options?: string[];
   properties?: IProperties;
-  style?: IStyle;
+  styles?: IStyle;
+  position: number;
 }
 
 export interface IStep {
   _id: string;
   elements: IElement[];
+  position: number;
 }
 
 export interface IForm {
   _id: string;
   name: string;
-  steps: IStep[] | IStepObj;
+  steps: IStep[];
   style?: IStyle;
 }
 

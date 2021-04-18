@@ -18,19 +18,21 @@ export interface AddForm {
 }
 
 export interface AddStep {
-  type: ActionTypes.ADD_STEP
+  type: ActionTypes.ADD_STEP;
   step: IStep;
-  id: string;
+  idForm: string;
+  position: number | null;
 }
 
 export interface AddElement {
-  type: ActionTypes.ADD_ELEMENT
-  element: IElement
+  type: ActionTypes.ADD_ELEMENT;
+  steps: IStep[];
+  idForm: string;
 }
 
 export interface DeleteForm {
-  type: ActionTypes.DELETE_FORM
-  id: string
+  type: ActionTypes.DELETE_FORM;
+  id: string;
 }
 
 export type ActionType =

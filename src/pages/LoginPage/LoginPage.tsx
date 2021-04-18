@@ -47,7 +47,6 @@ export const LoginPage = () => {
     history.push('/register')
   }
 
-
   return (
     <div className={classes.container} >
       <div>

@@ -24,18 +24,20 @@ export const reduxAddForm = (form: IForm): AddForm => {
   }
 }
 
-export const reduxAddStep = (step: IStep, id: string): AddStep => {
+export const reduxAddStep = (step: IStep, idForm: string, position: number | null): AddStep => {
   return {
     type: ActionTypes.ADD_STEP,
     step,
-    id
+    idForm,
+    position,
   }
 }
 
-export const reduxAddElement = (element: IElement, id: string): AddElement => {
+export const reduxAddElement = (idForm: string, steps: IStep[]): AddElement => {
   return {
     type: ActionTypes.ADD_ELEMENT,
-    element
+    steps,
+    idForm,
   }
 }
 

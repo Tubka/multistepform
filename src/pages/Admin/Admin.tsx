@@ -1,36 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AdminPanel } from '../../components/AdminPanel/AdminPanel';
+import { FormView } from '../../components/FormView/FormView';
+import { Loading } from '../../components/Loading/Loading';
 import { GetSelectors, Navigation } from '../../components/Navigation/Navigation';
-import { IForm } from '../../models/Form.models';
 import { HandlerForms } from './Helpers';
 
 export const Admin = () => {
   const { forms } = useSelector(GetSelectors.form);
-
-  const [form, setForm] = useState<IForm | null>(null);
+  const [loading, setLoading] = useState<boolean>(true)
   const [idForm, setIdForm] = useState<string | null>(null);
-  const [listForms, setListforms] = useState<IForm[]>([]);
+
+  const getForm = async () => {
+    setLoading(true);
+    await HandlerForms.getForm();
+    setLoading(false)
+  }
 
   useEffect(() => {
-      HandlerForms.getForm();
+    getForm();
   },[]);
 
-  useEffect(() => {
-    if(!forms || !idForm) {
-      setForm(null);
-      return;
-    };
 
-    if(forms) {
-      setForm(forms[idForm]);
-    };
-  },[idForm]);
-
+  if(loading) return <Loading />
   return (
     <>
       <Navigation forms={forms} setIdForm={setIdForm}/>
-      <AdminPanel form={form} setIdForm={setIdForm}/>
+      <FormView idForm={idForm} setIdForm={setIdForm}/>
     </>
   )
 }

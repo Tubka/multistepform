@@ -1,0 +1,124 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  margin-top: 0;
+  padding: 12px 0;
+  font-size: 16px;
+  color: #fff;
+  background-color: #074DB6;
+}
+
+.nameForm {
+  color: #fff;
+  padding: 4px 0;
+  margin: 0;
+  background-color:#4D8DDC;
+}
+
+.oneLi {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+
+.container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+  margin: 30px auto 0;
+  background-color: rgb(230, 230, 230);
+  border: 3px solid rgb(201, 201, 201);
+  border-radius: 8px
+}
+
+.flex {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.question {
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  align-self: flex-end;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  margin: 20px;
+  background: #307FE2;
+  border-radius: 6px;
+}
+
+.conatinerCreator {
+  border-top: 1px solid black;
+  padding-top: 10px;
+}
+
+
+
+.formToAdd {
+  /* width: 100%; */
+  margin-top: 10px;
+  /* display: flex; */
+  /* justify-content: flex-end; */
+}
+
+.listOption {
+  margin: 0 5px;
+}
+
+.inputPosition {
+  width: 30px;
+}
+
+.formNewStep {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.select {
+  margin: 10px 5px;
+}
+
+.testInput {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 2px solid #919191;
+  font-size: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnDelete {
+  margin: 5px 0 20px;
+  align-self: flex-end;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  background: #307FE2;
+  border-radius: 6px;
+}

@@ -1,3 +1,4 @@
+import { addSyntheticTrailingComment } from 'typescript';
 import { IFormObj, IForm, IStepObj, IStep } from '../../models/Form.models';
 import { ActionTypes } from "../actions/action.enum";
 import { ActionType } from "../actions/action.types";
@@ -6,7 +7,6 @@ import { FormState } from "../models/form.model";
 const initialState: FormState = {
   forms : null,
 }
-
 export const formReducer = (state = initialState, action: ActionType): FormState=> {
   switch (action.type) {
     case ActionTypes.SET_FORMS:
@@ -22,15 +22,15 @@ export const formReducer = (state = initialState, action: ActionType): FormState
       }
 
     case ActionTypes.SET_STEPS:
-      const steps: IStepObj = {}
+      const steps: IStep[] = []
       const formWithSteps: IFormObj | null = state.forms
+
       if(!formWithSteps) return {...state}
-      if(action && action.steps) {
-        action.steps.map((step: IStep) => {
-          steps[step['_id']] = step;
-        });
-      formWithSteps[action.id].steps = steps
-      };
+
+
+      formWithSteps[action.id].steps = action.steps
+
+
       return {
         ...state,
         forms: formWithSteps
@@ -45,26 +45,60 @@ export const formReducer = (state = initialState, action: ActionType): FormState
 
     case ActionTypes.ADD_STEP:
       const addStep = state.forms;
-      
-      // if(addStep){
-      //   addStep[action.id].steps = [...addStep[action.id].steps, action.step]
-      // }
+      if(!action.position && addStep) {
+        addStep[action.idForm].steps.push(action.step);
+
+        return {
+          ...state,
+          forms: addStep,
+        }
+      }
+      if(addStep && addStep[action.idForm] && action.position){
+        const place = action.position - 1;
+        const arrSteps = addStep[action.idForm].steps;
+        const beginArray = arrSteps.splice(0, place);
+
+        beginArray.push(action.step)
+        addStep[action.idForm].steps = beginArray.concat(arrSteps)
+      }
 
       return {
         ...state,
         forms: addStep,
+      };
+
+    case ActionTypes.ADD_ELEMENT:
+
+      if(state.forms) {
+        return {
+          ...state,
+          forms: {
+            ...state.forms,
+            [action.idForm]: {
+              ...state.forms[action.idForm], 
+              steps: action.steps
+            }
+          }
+        };
+      };
+
+      return {
+        ...state
       }
+    
+      
+    
 
     case ActionTypes.DELETE_FORM:
-      const formss = state.forms
+      const deleteForm = state.forms;
 
-      if(formss) {
-        delete formss[`${action.id}`]
+      if(deleteForm) {
+        delete deleteForm[`${action.id}`];
       }
 
       return {
         ...state,
-        forms: formss
+        forms: deleteForm
       }
     
     default:
