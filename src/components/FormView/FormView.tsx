@@ -40,7 +40,8 @@ export const FormView = ({idForm, setIdForm}: IProps): JSX.Element => {
   const handleNewStep = (e: SyntheticEvent) => {
     e.preventDefault();
     if(form?._id) {
-      fireLoading(() => HandlerForms.newStep(form._id, positionNewStep));
+      const position = positionNewStep ? positionNewStep -1 : null
+      fireLoading(() => HandlerForms.newStep(form._id, position));
     };
   };
 

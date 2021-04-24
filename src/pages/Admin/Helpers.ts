@@ -10,7 +10,6 @@ export class HandlerForms {
       alert('Błąd pobierania formularzy');
       return;
     }
-
     store.dispatch(reduxSetForm(result.data));
   }
   
@@ -20,7 +19,6 @@ export class HandlerForms {
       alert('Nie udało się pobrać formularza, spróbuj odświeżyć stronę.');
       return;
     }
-
     store.dispatch(reduxSetSteps(result.data.steps, id));
   }
 

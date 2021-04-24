@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import logo from './logo512.png'
 import classes from './LoginPage.module.css'
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { IDataLogin } from '../../models/Login';
 import { useAuthState } from '../../AuthProvider/useAuthState';
 import { Fetcher } from '../../helpers/Fetcher';
 import { IAuthProvider } from '../../models/AuthProvider';
-
+import GoogleButton from 'react-google-button'
+import  {GoogleLogin}  from 'react-google-login'
 export const LoginPage = () => {
   const history = useHistory();
   const {state, setState} = useAuthState(); // TODO
@@ -47,6 +48,12 @@ export const LoginPage = () => {
     history.push('/register')
   }
 
+  const handleGoogleApi = (e:any) => {
+    e.preventDefault();
+    
+    history.push('/collback');
+  }
+
   return (
     <div className={classes.container} >
       <div>
@@ -67,12 +74,14 @@ export const LoginPage = () => {
             value={dataLogin.password} 
             onChange={(e) => setDataLogin((prevState) => ({...prevState, ['password']: e.target.value}))}/>
           <button className={classes.button}>
-          ZALOGUJ
+            ZALOGUJ
           </button>
+          
+          <Link to={{ pathname: "https://msf-server.azurewebsites.net/api/user/google" }} target="_parent" className={classes.googleLink}><GoogleButton /></Link>
+          <button
+            className={`${classes.button} ${classes.registryBtn}`}
+            onClick={handleRegistry}>REJESTRAJCA</button>
       </form>
-      <button 
-        className={`${classes.button} ${classes.registryBtn}`}
-        onClick={handleRegistry}>REJESTRAJCA</button>
     </div>
   )
 }

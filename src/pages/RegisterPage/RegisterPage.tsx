@@ -3,8 +3,9 @@ import logo from './logo512.png';
 import classes from './RegisterPage.module.css';
 import axios from 'axios';
 import { IDataLogin } from '../../models/Login';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Requests } from '../../helpers/Requests';
+import GoogleButton from 'react-google-button';
 
 export const RegisterPage = () => {
   const history = useHistory()
@@ -45,23 +46,12 @@ export const RegisterPage = () => {
       }
       alert('Założyłeś/aś pomyślnie konto, zaloguj się!')
       history.push('/login');
-      // try {
-      //   const result = await axios.post(`https://msf-server.azurewebsites.net/api/user/signup`, data)
-      //   return
-      // }
-      // catch(err) {
-      //   alert('coś poszło nie tak, spróbuj ponownie.');
-      // }
-      // finally {
-      //   console.log('test');
-      // }
     }
     const data = {
       email: dataLogin.email,
       password: dataLogin.password,
     }
     sendAcc(data)
-    console.log(dataLogin.email, dataLogin.password);
   }
 
   const handleGoToLogin = () => {
@@ -103,8 +93,9 @@ export const RegisterPage = () => {
           <button className={classes.button}>
           UTWÓRZ
           </button>
-      </form>
           <button type="button" className={`${classes.button} ${classes.registryBtn}`} onClick={handleGoToLogin}>Mam konto</button>
+          <Link to={{ pathname: "https://msf-server.azurewebsites.net/api/user/google" }} target="_parent" className={classes.googleLink}><GoogleButton /></Link>
+      </form>
     </div>
   )
 }

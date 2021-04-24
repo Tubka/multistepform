@@ -3,7 +3,7 @@ import { Fetcher } from "./Fetcher";
 
 export class Requests {
   static getForms = () => {
-    return Fetcher.get('/api/form/getformlist');
+    return Fetcher.get('/api/form/getuserforms');
   };
 
   static getSteps = (id: string) => {
@@ -19,7 +19,7 @@ export class Requests {
   };
 
   static newStep = (id: string, position: number | null) => {
-    return Fetcher.post(`/api/form/createStep?formid=${id}`, position? {position} : null);
+    return Fetcher.post(`/api/form/createStep?formid=${id}`, typeof position === 'number'? {position} : null);
   };
 
   static deleteStep = (idForm: string, idStep: string) => {
@@ -41,4 +41,9 @@ export class Requests {
   static signup = (data: IDataLogin) => {
     return Fetcher.post(`api/user/signup`, data)
   };
+
+  static googleApi = (code: string | null) => {
+    return Fetcher.get(`api/user/google/callback?code=${code}`)
+  };
+
 }

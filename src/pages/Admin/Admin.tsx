@@ -5,6 +5,7 @@ import { Loading } from '../../components/Loading/Loading';
 import { GetSelectors, Navigation } from '../../components/Navigation/Navigation';
 import { HandlerForms } from './Helpers';
 
+
 export const Admin = () => {
   const { forms } = useSelector(GetSelectors.form);
   const [loading, setLoading] = useState<boolean>(true)
@@ -17,7 +18,9 @@ export const Admin = () => {
   }
 
   useEffect(() => {
+    
     getForm();
+
   },[]);
 
 

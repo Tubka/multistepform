@@ -54,7 +54,7 @@ export const formReducer = (state = initialState, action: ActionType): FormState
         }
       }
       if(addStep && addStep[action.idForm] && action.position){
-        const place = action.position - 1;
+        const place = action.position;
         const arrSteps = addStep[action.idForm].steps;
         const beginArray = arrSteps.splice(0, place);
 
