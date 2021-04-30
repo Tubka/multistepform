@@ -4,6 +4,7 @@
   top: 0;
   left: 0;
   width: 70%;
+  max-width: 400px;
   height: 100vh;
   color: #fff;
   display: flex;
@@ -121,5 +122,37 @@
 
   100% {
     transform: translateX(0) rotate(270deg)
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  .container {
+    position: static;
+    transform: translateX(0);
+
+
+
+    /* text-align: center;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    background-color: #307FE2;
+    z-index: 2; */
+    
+  }
+
+  .menuBtn {
+    display: none;
+
+  }
+
+
+  .iconBack {
+    display: none;
+
   }
 }

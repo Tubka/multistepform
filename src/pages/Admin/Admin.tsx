@@ -4,7 +4,7 @@ import { FormView } from '../../components/FormView/FormView';
 import { Loading } from '../../components/Loading/Loading';
 import { GetSelectors, Navigation } from '../../components/Navigation/Navigation';
 import { HandlerForms } from './Helpers';
-
+import classes from './Admin.module.css'
 
 export const Admin = () => {
   const { forms } = useSelector(GetSelectors.form);
@@ -26,9 +26,9 @@ export const Admin = () => {
 
   if(loading) return <Loading />
   return (
-    <>
+    <div className={classes.container}>
       <Navigation forms={forms} setIdForm={setIdForm}/>
       <FormView idForm={idForm} setIdForm={setIdForm}/>
-    </>
+    </div>
   )
 }
